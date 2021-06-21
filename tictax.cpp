@@ -38,6 +38,15 @@ bool checkWin(string board[], string A, int player) {
 	} else if (board[20] == A && board[22] == A && board[24] == A) {
 		cout << "\nPlayer " << player << " wins!" << endl;
 		return true;
+		
+	} else if (board[10] == A && board[12] == A && board[14] == A) {
+		cout << "\nPlayer " << player << " wins!" << endl;
+		return true;
+		
+	} else if (board[2] == A && board[12] == A && board[22] == A) {
+		cout << "\nPlayer " << player << " wins!" << endl;
+		return true;
+		
 	} else {
 		return false;
 	}
@@ -137,7 +146,6 @@ void startGame(string board[], string legend[]) {
 	
 	if (win == false) {
 		cout << "Draw! No one wins..." << endl;
-		cin >> rematch;
 	}
 	
 	cout << "\nRematch? (y/n): ";
@@ -160,6 +168,7 @@ int main() {
 	
 	// This is the board setup (no inputs)
 	string board [25] = {"   ", " | ", "   ", " | ", "   ", "---", "-|-", "---", "-|-", "---", "   ", " | ", "   ", " | ", "   ", "---", "-|-", "---", "-|-", "---", "   ", " | ", "   ", " | ", "   "};
+	
 	
 	// Printing
 	printBoard(legend);
