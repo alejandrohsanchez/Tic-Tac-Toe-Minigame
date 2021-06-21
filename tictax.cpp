@@ -116,6 +116,7 @@ void resetBoard(string board[]) {
 
 void startGame(string board[], string legend[]) {
 	int N = 25, Rounds = 9, i, callout, player;
+	int pass [9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 	string X = " X ", O = " O ", rematch;
 	bool win = false;
 	
@@ -126,16 +127,32 @@ void startGame(string board[], string legend[]) {
 			player = 1;
 			cout << "\nPlayer 1: ";
 			cin >> callout;
-			submit(board, callout, X);
-			win = checkWin(board, X, player);
+			
+			if (pass[callout - 1] == 0) {
+				pass[callout - 1] = 1;
+				submit(board, callout, X);
+				win = checkWin(board, X, player);
+			} else {
+				cout << "Tile already taken" << endl;
+				i--;
+			}
+			
+			
 		}
 		// Player 2 (O)
 		else if(i % 2 == 1) {
 			player = 2;
 			cout << "\nPlayer 2: ";
 			cin >> callout;
-			submit(board, callout, O);
-			win = checkWin(board, O, player);
+			
+			if (pass[callout - 1] == 0) {
+				pass[callout - 1] = 1;
+				submit(board, callout, O);
+				win = checkWin(board, O, player);
+			} else {
+				cout << "Tile already taken" << endl;
+				i--;
+			}
 		}
 		
 		if (win == true) {
